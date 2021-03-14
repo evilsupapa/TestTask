@@ -33,6 +33,4 @@ Good luck and, most importantly, have fun! :)
 
 ## How to publish the results
 
-You can make all the changes in a separate branch. Once you are done, you can create a pull request and provide us with a URL to it (or a pull request number). OBSERVATIONS.md file is supposed to be a part of the pull request.
-
-if you run into issues with pull request creation, please feel free to create a new public GitHub repository with all of your changes and send us a link to it.
+Please fork this GitHub repository and make all the changes in there. Once you have finished with the task, please send us a link to your forked repository. In particular, OBSERVATIONS.md file is supposed to reside in it.
