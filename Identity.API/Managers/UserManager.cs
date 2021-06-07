@@ -2,11 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using TestWeb.API.Entities;
-using TestWeb.API.Models;
-using TestWeb.API.Repositories;
+using Identity.API.Entities;
+using Identity.API.Models;
+using Identity.API.Repositories;
 
-namespace TestWeb.API.Managers
+namespace Identity.API.Managers
 {
     public class UserManager : IUserManager
     {

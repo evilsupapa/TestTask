@@ -1,6 +1,6 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace TestWeb.API.Models
+namespace Identity.API.Models
 {
     public class UserRequest
     {

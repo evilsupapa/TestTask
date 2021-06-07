@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
-using TestWeb.API.Entities;
-using TestWeb.API.Managers;
-using TestWeb.API.Models;
-using TestWeb.API.Repositories;
+using Identity.API.Entities;
+using Identity.API.Managers;
+using Identity.API.Models;
+using Identity.API.Repositories;
 
-namespace TestWeb.API.Controllers
+namespace Identity.API.Controllers
 {
     [ApiController]
     public class UsersController : ControllerBase

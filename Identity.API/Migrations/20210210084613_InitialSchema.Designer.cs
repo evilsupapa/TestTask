@@ -5,9 +5,9 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using TestWeb.API;
+using Identity.API;
 
-namespace TestWeb.API.Migrations
+namespace Identity.API.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20210210084613_InitialSchema")]
@@ -21,7 +21,7 @@ namespace TestWeb.API.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.2");
 
-            modelBuilder.Entity("TestWeb.API.Entities.AddressEntity", b =>
+            modelBuilder.Entity("Identity.API.Entities.AddressEntity", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -62,7 +62,7 @@ namespace TestWeb.API.Migrations
                     b.ToTable("Addresses");
                 });
 
-            modelBuilder.Entity("TestWeb.API.Entities.UserEntity", b =>
+            modelBuilder.Entity("Identity.API.Entities.UserEntity", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -95,9 +95,9 @@ namespace TestWeb.API.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("TestWeb.API.Entities.UserEntity", b =>
+            modelBuilder.Entity("Identity.API.Entities.UserEntity", b =>
                 {
-                    b.HasOne("TestWeb.API.Entities.AddressEntity", "AddressEntity")
+                    b.HasOne("Identity.API.Entities.AddressEntity", "AddressEntity")
                         .WithMany()
                         .HasForeignKey("AddressEntityId")
                         .OnDelete(DeleteBehavior.Cascade);

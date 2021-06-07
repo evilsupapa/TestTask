@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using TestWeb.API.Entities;
+using Identity.API.Entities;
 
-namespace TestWeb.API
+namespace Identity.API
 {
     public class ApplicationDbContext : DbContext
     {

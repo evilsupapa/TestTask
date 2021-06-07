@@ -5,10 +5,10 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
-using TestWeb.API.Managers;
-using TestWeb.API.Repositories;
+using Identity.API.Managers;
+using Identity.API.Repositories;
 
-namespace TestWeb.API
+namespace Identity.API
 {
     public class Startup
     {

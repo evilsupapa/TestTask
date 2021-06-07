@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using TestWeb.API.Entities;
-using TestWeb.API.Models;
+using Identity.API.Entities;
+using Identity.API.Models;
 
-namespace TestWeb.API.Managers
+namespace Identity.API.Managers
 {
     public interface IUserManager
     {

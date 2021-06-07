@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace TestWeb.API.Migrations
+namespace Identity.API.Migrations
 {
     public partial class InitialSchema : Migration
     {

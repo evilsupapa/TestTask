@@ -1,6 +1,6 @@
-using TestWeb.API.Entities;
+using Identity.API.Entities;
 
-namespace TestWeb.API.Repositories
+namespace Identity.API.Repositories
 {
     public interface IAddressRepository
     {

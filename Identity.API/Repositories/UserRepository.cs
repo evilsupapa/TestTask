@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using TestWeb.API.Entities;
+using Identity.API.Entities;
 
-namespace TestWeb.API.Repositories
+namespace Identity.API.Repositories
 {
     public class UserRepository : IUserRepository
     {
