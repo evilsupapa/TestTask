@@ -1,47 +1,74 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Microsoft.AspNetCore.Mvc;
-using Identity.API.Entities;
-using Identity.API.Managers;
+﻿using Microsoft.AspNetCore.Mvc;
 using Identity.API.Models;
-using Identity.API.Repositories;
+using Identity.Service.Managers;
+using System.Threading.Tasks;
+using Identity.Service.Queries;
+using Identity.API.Extensions;
+using Serilog;
 
 namespace Identity.API.Controllers
 {
     [ApiController]
+    [Route("api/v{version:apiVersion}/[controller]")]
+    [ApiVersion("1.0")]
     public class UsersController : ControllerBase
     {
+        private readonly ILogger _logger;
         private readonly IUserManager _userManager;
-        private readonly IUserRepository _userRepository;
 
-        public UsersController(IUserManager userManager, IUserRepository userRepository)
+        public UsersController(IUserManager userManager, ILogger logger)
         {
+            _logger = logger;
             _userManager = userManager;
-            _userRepository = userRepository;
-        }
-        
-        [HttpGet("GetUserById")]
-        public UserEntity GetById(long id)
-        {
-            return _userRepository.Get().Result.First(u => u.Id == id);
-        }   
-
-        [HttpGet("GetUserByLogin")]
-        public UserEntity GetByLogin(string login)
-        {
-             return _userManager.GetByLogin(login).Result;
         }
 
-        [HttpGet("GetUsersByCountry")]
-        public IEnumerable<UserEntity> GetByCountry(string country)
+        [HttpGet("{id}")]
+        public async Task<IActionResult> GetById(long id)
         {
-            return _userManager.GetByCountry(country).Result;
+            var query = new GetUserByIdQuery { Id = id };
+
+            var user = await _userManager.GetById(query);
+            if (user == null)
+            {
+                _logger.Information($"User with id={id} not found");
+                return NotFound();
+            }
+
+            return Ok(user);
         }
 
-        [HttpPost("CreateUser")]
-        public void Create([FromQuery] UserRequest request)
+        [HttpGet("login/{login}")]
+        public async Task<IActionResult> GetByLogin(string login)
         {
-            _userManager.Create(request);
+            var query = new GetUserByLoginQuery { Login = login };
+
+            var user = await _userManager.GetByLogin(query);
+            if (user == null)
+            {
+                _logger.Information($"User with login={login} not found");
+                return NotFound();
+            }
+
+            return Ok(user);
+        }
+
+        [HttpGet("country/{country}")]
+        public async Task<IActionResult> FindByCountry(string country)
+        {
+            var query = new FindUsersByCountryQuery { Country = country };
+            return Ok(await _userManager.FindByCountry(query));
+        }
+
+        [HttpPost("create")]
+        public async Task<IActionResult> Create(CreateUserRequest request)
+        {
+            var user = await _userManager.Create(request.ToCreateUserCommand());
+            if (user == null)
+            {
+                return StatusCode(500);
+            }
+
+            return Ok();
         }
     }
 }

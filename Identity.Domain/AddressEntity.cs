@@ -1,21 +1,15 @@
 using System;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Identity.API.Entities
+namespace Identity.Domain
 {
     public class AddressEntity
     {
-        [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long Id { get; set; }
 
-        [Required]
         public string Country { get; set; }
 
         public string State { get; set; }
 
-        [Required]
         public string City { get; set; }
 
         public string Street { get; set; }
@@ -25,9 +19,7 @@ namespace Identity.API.Entities
         public string FlatNumber { get; set; }
 
         public string PostalCode { get; set; }
-
         public DateTime CreatedAt { get; set; }
-
-        public DateTime UpdatedAt { get; set; }
+        public DateTime? UpdatedAt { get; set; }
     }
 }

@@ -1,7 +1,8 @@
+using Identity.Data;
+using Identity.Domain;
 using System.Threading.Tasks;
-using Identity.API.Entities;
 
-namespace Identity.API.Repositories
+namespace Identity.DataAccess.Repositories
 {
     public class AddressRepository : IAddressRepository
     {
@@ -12,10 +13,10 @@ namespace Identity.API.Repositories
             _context = context;
         }
         
-        public AddressEntity Save(AddressEntity address)
+        public async Task<AddressEntity> Create(AddressEntity address)
         {
-            _context.Addresses.Add(address);
-            _context.SaveChanges();
+            await _context.Addresses.AddAsync(address);
+            await _context.SaveChangesAsync();
             return address;
         }
     }
